@@ -1,0 +1,13 @@
+
+W
+java:S1141N"5Extract this nested try block into a separate method.(ç£êúÿÿÿÿ8å¿ÎÕ2
+R
+java:S1141k"5Extract this nested try block into a separate method.(ó¯˜á8å¿ÎÕ2
+a
+java:S2095Q"DUse try-with-resources or close this "Stream" in a "finally" clause.(â£¼8ûå¿ÎÕ2
+G	java:S106J"+Replace this use of System.err by a logger.(¢ôŠ¼8ÿå¿ÎÕ2
+G	java:S106T"+Replace this use of System.err by a logger.(á¸ğ™8ÿå¿ÎÕ2
+L	java:S106Z"+Replace this use of System.err by a logger.(ÑÁøÇıÿÿÿÿ8ÿå¿ÎÕ2
+G	java:S106g"+Replace this use of System.out by a logger.(à÷ÁÂ8€æ¿ÎÕ2
+H	java:S106Ø"+Replace this use of System.out by a logger.(æÒß„8…æ¿ÎÕ2
+M	java:S106ê"+Replace this use of System.out by a logger.(ÀÙ‰Ñşÿÿÿÿ8†æ¿ÎÕ2
