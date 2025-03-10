@@ -125,6 +125,7 @@ public class LogAnalysisUI
                         {
                             try
                             {
+                                get(); // 关键：触发异常传播
                                 // 任务完成后恢复按钮状态并显示消息
                                 JOptionPane.showMessageDialog(frame, "Log analysis completed for: " + inputDate);
                             }

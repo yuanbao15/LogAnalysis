@@ -183,8 +183,12 @@ public class LogAnalyzer2
             // 检查日志目录下是否有log日志文件，有的话则获取
             try
             {
-                // 获取日志目录下所有 .log 文件
-                logFiles = Files.walk(Paths.get(logDir)).filter(Files::isRegularFile).filter(path -> path.toString().endsWith(".log")).collect(Collectors.toList());
+                // 获取日志目录下所有 .log 文件 和 .log.1、.log.2等文件
+                logFiles = Files.walk(Paths.get(logDir))
+                        .filter(Files::isRegularFile)
+                        // 修改此处增加适配".log.1"、".log.2"等格式，原来只适配".log"。取文件名而不是取路径防止无匹配
+                        .filter(path -> path.getFileName().toString().matches(".*\\.log(\\.\\d+)?$"))
+                        .collect(Collectors.toList());
             } catch (IOException e)
             {
                 System.err.println("获取日志文件出错：" + e.toString());
@@ -381,6 +385,7 @@ public class LogAnalyzer2
         } catch (IOException e)
         {
             e.printStackTrace();
+            throw new RuntimeException("写入输出文件出错：" + e.toString());
         }
     }
 
@@ -400,6 +405,22 @@ public class LogAnalyzer2
         {
             Cell cell = headerRow.createCell(i);
             cell.setCellValue(headers[i]);
+
+            // 设置列宽
+            sheet.setColumnWidth(i, 256 * 10); // 每列宽度为10个字符
+
+            // 特殊列宽设置
+            if (i == 0)
+            {
+                sheet.setColumnWidth(i, 256 * 5); // 第1列宽度为5个字符
+            } else if (i == 2)
+            {
+                sheet.setColumnWidth(i, 256 * 15); // 第3列宽度为15个字符   日期/月份
+            } else if (i >= 4)
+            {
+                sheet.setColumnWidth(i, 256 * 15); // 第5列及之后宽度为15个字符   通义-总次数
+            }
+
         }
 
         // 填充数据
@@ -432,6 +453,11 @@ public class LogAnalyzer2
         try (FileOutputStream fileOut = new FileOutputStream(excelPath.toFile()))
         {
             workbook.write(fileOut);
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+            System.err.println("写入Excel文件出错：" + e.toString());
+            throw new RuntimeException("写入Excel文件出错：" + e.toString());
         }
 
         // 关闭工作簿
