@@ -10,6 +10,7 @@ import java.util.stream.*;
 /**
  * @ClassName: LogAnalyzer
  * @Description: 日志分析工具类，用于分析指定目录下的日志文件，并统计用户行为。 优化目标：减少内存占用，支持处理大量日志文件和数据行。<br>
+ *      第一版：仅适用于每个人一个日志文件的情况；仅处理最近7天的日志；
  * @Author: yuanbao
  * @Date: 2025/2/8
  **/

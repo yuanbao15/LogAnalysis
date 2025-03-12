@@ -21,7 +21,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 /**
  * @ClassName: LogAnalyzer2
  * @Description: 日志分析工具类，用于分析指定目录下的日志文件，并统计用户行为。 优化目标：减少内存占用，支持处理大量日志文件和数据行。<br>
- * 新增功能：
+ * 第二版新增功能：
  *      1. 支持同一用户多个日志文件合并统计
  *      2. 支持按日、按月统计两种模式，按月则是包含当月及前6个月
  *      3. 改进文件名解析逻辑
