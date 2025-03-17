@@ -446,6 +446,44 @@ public class LogAnalyzer2
             }
         }
 
+
+        // 20250317 增加sheet记录人员名单，注意去重
+        Sheet sheet2 = workbook.createSheet("人员名单");
+        // 表头
+        Row headerRow2 = sheet2.createRow(0);
+        String[] headers2 = {"序号", "姓名"};
+        for (int i = 0; i < headers2.length; i++)
+        {
+            Cell cell = headerRow2.createCell(i);
+            cell.setCellValue(headers2[i]);
+
+            // 设置列宽
+            sheet2.setColumnWidth(i, 256 * 10); // 每列宽度为10个字符
+            if (i == 0)
+            {
+                sheet2.setColumnWidth(i, 256 * 5); // 第1列宽度为5个字符
+            } else if (i == 1)
+            {
+                sheet2.setColumnWidth(i, 256 * 15); // 第2列宽度为15个字符   姓名
+            }
+        }
+        // 填充数据
+        int rowNum2 = 1;
+        for (Map.Entry<String, Map<LocalDate, Map<String, Integer>>> entry : stats.entrySet())
+        {
+            Row row = sheet2.createRow(rowNum2++);
+            Cell seqCell = row.createCell(0);
+            seqCell.setCellValue(rowNum2 - 1); // 序号
+            row.createCell(1).setCellValue(entry.getKey()); // 姓名
+
+            // 设置序号居中
+            CellStyle cellStyle = workbook.createCellStyle();
+            cellStyle.setAlignment(HorizontalAlignment.CENTER);
+            seqCell.setCellStyle(cellStyle);
+        }
+
+
+
         // 写入文件
         // 按日模式和月模式分别生成不同的文件名
         String fileName = mode == AnalysisMode.DAILY ? "analysis_report_daily.xlsx" : "analysis_report_monthly.xlsx";

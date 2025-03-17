@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Date;
 
 /**
@@ -23,6 +25,9 @@ public class LogAnalysisUI
     private JTextField logDirField; // 日志目录输入框
     private JButton confirmButton; // 确认按钮
     private LogAnalyzer2 logAnalyzer;
+
+    private Instant startTime; // 新增变量：记录分析开始时间
+    private Instant endTime;   // 新增变量：记录分析结束时间
 
     public LogAnalysisUI()
     {
@@ -104,6 +109,9 @@ public class LogAnalysisUI
 
                 try
                 {
+                    // 记录开始时间
+                    startTime = Instant.now();
+
                     // 将确认按钮置灰不可用，且修改为“请稍候..”
                     confirmButton.setText("Processing... Wait.");
                     confirmButton.setEnabled(false);
@@ -126,8 +134,16 @@ public class LogAnalysisUI
                             try
                             {
                                 get(); // 关键：触发异常传播
-                                // 任务完成后恢复按钮状态并显示消息
-                                JOptionPane.showMessageDialog(frame, "Log analysis completed for: " + inputDate);
+                                // 任务完成后恢复按钮状态并显示消息，并提示耗时多久
+
+                                // 记录结束时间并显示耗时
+                                endTime = Instant.now();
+                                Duration duration = Duration.between(startTime, endTime);
+                                long seconds = duration.getSeconds();
+
+                                JOptionPane.showMessageDialog(frame, "Log analysis completed for: " + inputDate
+                                        + "\nExecution time: " + seconds + " seconds.");
+
                             }
                             catch (Exception ex)
                             {
@@ -163,10 +179,18 @@ public class LogAnalysisUI
         new LogAnalysisUI();
     }
 
+    /**
+     * 自定义带提示的文本框-用于作为提示默认当前目录的 placeholder
+     */
     public class PlaceholderTextField extends JTextField
     {
         private String placeholder;
 
+        /**
+         * 构造方法
+         *
+         * @param placeholder 提示信息
+         */
         public PlaceholderTextField(String placeholder)
         {
             this.placeholder = placeholder;
@@ -175,6 +199,7 @@ public class LogAnalysisUI
             setEditable(true);
             addFocusListener(new java.awt.event.FocusAdapter()
             {
+                @Override
                 public void focusGained(java.awt.event.FocusEvent evt)
                 {
                     if (getText().equals(placeholder))
@@ -184,6 +209,7 @@ public class LogAnalysisUI
                     }
                 }
 
+                @Override
                 public void focusLost(java.awt.event.FocusEvent evt)
                 {
                     if (getText().length() == 0)
@@ -195,6 +221,9 @@ public class LogAnalysisUI
             });
         }
 
+        /**
+         * 重写 paintComponent 方法，实现 placeholder 的显示
+         */
         @Override
         public void paintComponent(Graphics g)
         {
