@@ -1,0 +1,42 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "\\QMETA-INF/services/org.apache.xmlbeans.impl.store.Locale$\\E.*"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/org.apache.xmlbeans.XmlBeans$\\E.*"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/javax.xml.stream.XMLInputFactory\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/services/javax.xml.stream.XMLOutputFactory\\E"
+      },
+      {
+        "pattern": ".*\\.properties"
+      },
+      {
+        "pattern": ".*\\.xml"
+      },
+      {
+        "pattern": ".*\\.xsd"
+      }
+    ]
+  },
+  "bundles": [
+    {
+      "name": "sun.awt.resources.awt",
+      "locales": ["en", "zh_CN"]
+    },
+    {
+      "name": "com.sun.swing.internal.plaf",
+      "locales": ["en", "zh_CN"]
+    },
+    {
+      "name": "com.sun.java.swing.plaf.windows.resources.windows",
+      "locales": ["en", "zh_CN"]
+    },
+    { "name": "javax.swing.plaf.basic.resources.basic" }
+  ]
+} 

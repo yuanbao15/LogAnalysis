@@ -1,0 +1,55 @@
+[
+  {
+    "name": "java.awt.Toolkit",
+    "methods": [
+      { "name": "getDefaultToolkit", "parameterTypes": [] },
+      { "name": "getFontMetrics", "parameterTypes": ["java.awt.Font"] },
+      { "name": "initIDs", "parameterTypes": [] }
+    ]
+  },
+  {
+    "name": "sun.awt.windows.WToolkit",
+    "methods": [
+      { "name": "<init>", "parameterTypes": [] },
+      { "name": "getFontMetrics", "parameterTypes": ["java.awt.Font"] },
+      { "name": "initIDs", "parameterTypes": [] }
+    ]
+  },
+  {
+    "name": "java.awt.Component",
+    "fields": [
+      { "name": "background" },
+      { "name": "foreground" },
+      { "name": "peer" },
+      { "name": "font" }
+    ],
+    "methods": [
+      { "name": "initIDs", "parameterTypes": [] }
+    ]
+  },
+  {
+    "name": "java.awt.Container",
+    "methods": [
+      { "name": "initIDs", "parameterTypes": [] },
+      { "name": "getComponents", "parameterTypes": [] },
+      { "name": "add", "parameterTypes": ["java.awt.Component"] }
+    ]
+  },
+  {
+    "name": "java.awt.Font",
+    "methods": [
+      { "name": "initIDs", "parameterTypes": [] }
+    ]
+  },
+  {
+    "name": "java.awt.FontMetrics",
+    "methods": [
+      { "name": "initIDs", "parameterTypes": [] }
+    ]
+  },
+  {
+    "name": "sun.awt.windows.WComponentPeer",
+    "methods": [
+    ]
+  }
+] 

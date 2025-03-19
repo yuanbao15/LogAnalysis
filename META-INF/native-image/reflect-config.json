@@ -1,0 +1,196 @@
+[
+  {
+    "name": "java.awt.Toolkit",
+    "methods": [
+      { "name": "getDefaultToolkit", "parameterTypes": [] },
+      { "name": "getFontMetrics", "parameterTypes": ["java.awt.Font"] },
+      { "name": "initIDs", "parameterTypes": [] }
+    ],
+    "fields": [
+      { "name": "toolkit" },
+      { "name": "resources" }
+    ]
+  },
+  {
+    "name": "sun.awt.windows.WToolkit",
+    "methods": [
+      { "name": "<init>", "parameterTypes": [] },
+      { "name": "getFontMetrics", "parameterTypes": ["java.awt.Font"] },
+      { "name": "initIDs", "parameterTypes": [] }
+    ]
+  },
+  {
+    "name": "java.awt.Font",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true,
+    "methods": [
+      { "name": "initIDs", "parameterTypes": [] }
+    ]
+  },
+  {
+    "name": "java.awt.FontMetrics",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true,
+    "methods": [
+      { "name": "initIDs", "parameterTypes": [] }
+    ]
+  },
+  {
+    "name": "java.awt.Component",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true,
+    "methods": [
+      { "name": "initIDs", "parameterTypes": [] }
+    ]
+  },
+  {
+    "name": "java.awt.Container",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true,
+    "methods": [
+      { "name": "initIDs", "parameterTypes": [] }
+    ]
+  },
+  {
+    "name": "java.awt.Window",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true,
+    "methods": [
+      { "name": "initIDs", "parameterTypes": [] }
+    ]
+  },
+  {
+    "name": "java.awt.Frame",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true,
+    "methods": [
+      { "name": "initIDs", "parameterTypes": [] }
+    ]
+  },
+  {
+    "name": "javax.swing.JFrame",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "javax.swing.JPanel",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "javax.swing.JButton",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "javax.swing.JLabel",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "javax.swing.JTextField",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "sun.awt.windows.WComponentPeer",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "sun.awt.windows.WFramePeer",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true,
+    "methods": [
+      { "name": "initIDs", "parameterTypes": [] }
+    ]
+  },
+  {
+    "name": "sun.awt.windows.WWindowPeer",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true,
+    "methods": [
+      { "name": "initIDs", "parameterTypes": [] }
+    ]
+  },
+  {
+    "name": "org.apache.xmlbeans.XmlBeans",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.apache.xmlbeans.impl.schema.SchemaTypeLoaderImpl",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.apache.xmlbeans.impl.schema.SchemaTypeLoaderImpl$SchemaTypeLoaderCache",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.apache.xmlbeans.impl.regex.SchemaRegularExpression",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.apache.xmlbeans.impl.regex.Token",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.apache.xmlbeans.impl.regex.Token$ConcatToken",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.apache.xmlbeans.impl.regex.Token$ParenToken",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.apache.xmlbeans.impl.regex.Token$ClosureToken",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.apache.xmlbeans.impl.regex.Token$UnionToken",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.apache.xmlbeans.impl.regex.RangeToken",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.apache.poi.ss.usermodel.IndexedColors",
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  }
+] 
