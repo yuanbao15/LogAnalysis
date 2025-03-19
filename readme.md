@@ -4,13 +4,49 @@
 
 
 
-### 本工具作用：
+## 本工具作用：
+
+这是一个用于分析日志文件的图形界面工具。
 
 在上个自研工具CollectIdeaLog.exe实现自动抓取全部的IDEA日志并上传至FTP后，本工具用于对IDEA日志进行分析处理。
 
 
 
-### 实现：
+## 系统要求
+
+- Windows 7/8/10/11
+- Java Runtime Environment (JRE) 8.0 或更高版本
+
+
+
+## 使用说明
+
+1. 双击运行 release/文件夹下的`LogAnalysis.exe`
+2. 在日期输入框中输入要分析的日期（格式：yyyyMMdd 或 yyyyMM）
+3. 选择日志文件所在目录（默认为当前目录）
+4. 点击"CONFIRM"按钮开始分析
+5. 分析完成后，会在选择的目录下生成分析报告（Excel格式）
+
+
+
+## 注意事项
+
+- 日志文件名格式应为：机器名<u>_</u>系统用户名<u>_</u>真实用户名<u>_</u>idea.log，支持多个，数字可在log前或者后
+- 支持分析后缀为.log和.1.log、.log.1等格式的日志文件
+- 分析结果将保存在与日志文件相同的目录下
+
+
+
+## 输出文件说明
+
+- analysis_report_daily.txt：每日分析报告（文本格式）
+- analysis_report_daily.xlsx：每日分析报告（Excel格式）
+- analysis_report_monthly.txt：月度分析报告（文本格式）
+- analysis_report_monthly.xlsx：月度分析报告（Excel格式）
+
+
+
+### 实现过程：
 
 1. 按人员多日志分析处理；
 2. 支持按日和按月模式；
@@ -19,6 +55,7 @@
 5. 在分析通义灵码插件基础上，增加Github Copilot的分析；
 6. 增加jar转可执行exe程序；
 7. 增加可视化交互操作界面；
+8. 增加bat批处理一键打包jar和exe程序；
 
 
 
