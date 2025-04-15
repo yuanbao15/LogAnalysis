@@ -36,3 +36,4 @@ build/
 
 ### 自测文件和文件夹 ###
 logs/
+release/

@@ -21,12 +21,12 @@ call mvn clean package -Dfile.encoding=UTF-8
 
 :: 使用native-image构建可执行文件
 echo 正在生成本地可执行文件...
-:: 能生成exe，可运行，但依赖jar包，不能独立运行
-:: call native-image -jar target/LogAnalysis-1.2-SNAPSHOT.jar -H:Path=release -H:Name=LogAnalysis-1.2 -H:Class=com.idea.LogAnalysisUI --verbose LogAnalysis
-:: 能生成exe，不可运行，运行报错awt问题
+:: 1-能生成exe，可运行，但依赖jar包，不能独立运行
+call native-image -jar target/LogAnalysis-1.2-SNAPSHOT.jar -H:Path=release -H:Name=LogAnalysis-1.2 -H:Class=com.idea.LogAnalysisUI --verbose LogAnalysis
+:: 2-能生成exe，不可运行，运行报错awt问题
 :: call native-image -jar target/LogAnalysis-1.2-SNAPSHOT.jar -H:Path=release -H:Name=LogAnalysis-1.2 -H:Class=com.idea.LogAnalysisUI -H:ConfigurationFileDirectories=META-INF/native-image -H:IncludeResources=.* --initialize-at-run-time=java.awt,javax.swing --no-fallback --static --verbose LogAnalysis
-:: 不能生成exe，打exe报错：error LNK2001: 无法解析的外部符号 Java_jdk_internal_misc_VM_getNanoTimeAdjustment
-call native-image -jar target/LogAnalysis-1.2-SNAPSHOT.jar -H:Path=release -H:Name=LogAnalysis_1.2 -H:Class=com.idea.LogAnalysisUI -H:ConfigurationFileDirectories=META-INF/native-image -H:IncludeResources=.* -H:+JNI -H:+AddAllCharsets -H:+ReportExceptionStackTraces -H:CLibraryPath=%JAVA_HOME%\lib -H:CLibraryPath=%JAVA_HOME%\bin --initialize-at-run-time=java.awt,javax.swing,sun.awt,sun.java2d,com.sun.java.swing --initialize-at-build-time=com.idea.LogAnalysisUI --no-fallback --static --verbose LogAnalysis
+:: 3-不能生成exe，打exe报错：error LNK2001: 无法解析的外部符号 Java_jdk_internal_misc_VM_getNanoTimeAdjustment
+:: call native-image -jar target/LogAnalysis-1.2-SNAPSHOT.jar -H:Path=release -H:Name=LogAnalysis_1.2 -H:Class=com.idea.LogAnalysisUI -H:ConfigurationFileDirectories=META-INF/native-image -H:IncludeResources=.* -H:+JNI -H:+AddAllCharsets -H:+ReportExceptionStackTraces -H:CLibraryPath=%JAVA_HOME%\lib -H:CLibraryPath=%JAVA_HOME%\bin --initialize-at-run-time=java.awt,javax.swing,sun.awt,sun.java2d,com.sun.java.swing --initialize-at-build-time=com.idea.LogAnalysisUI --no-fallback --static --verbose LogAnalysis
 
 
 :: 复制必要的文件到release目录

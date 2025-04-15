@@ -23,7 +23,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @Description: 日志分析工具类，用于分析指定目录下的日志文件，并统计用户行为。 优化目标：减少内存占用，支持处理大量日志文件和数据行。<br>
  * 第二版新增功能：
  *      1. 支持同一用户多个日志文件合并统计
- *      2. 支持按日、按月统计两种模式，按月则是包含当月及前6个月
+ *      2. 支持按日、按月统计两种模式：按日指指定日期的七天内，按月则是指定月份的6个月内
  *      3. 改进文件名解析逻辑
  *      4. 支持参数输入控制统计日期、日志目录、输出目录
  *      5. 增加生成excel报告
@@ -103,19 +103,17 @@ public class LogAnalyzer2
                 } catch (Exception e)
                 {
                     System.err.println("传参月份格式不对，应为yyyyMM。当前为：" + dateArg);
-//                    return;
                     throw new RuntimeException("传参月份格式不对，应为yyyyMM。当前为：" + dateArg);
                 }
                 mode = AnalysisMode.MONTHLY;
             } else
-            { // 周模式参数，如20250303
+            { // 日模式参数，如20250303
                 try
                 {
                     baseDate = LocalDate.parse(dateArg, DateTimeFormatter.ofPattern("yyyyMMdd"));
                 } catch (Exception e)
                 {
                     System.err.println("传参日期格式不对，应为yyyyMMdd。当前为：" + dateArg);
-//                    return;
                     throw new RuntimeException("传参日期格式不对，应为yyyyMMdd。当前为：" + dateArg);
                 }
                 mode = AnalysisMode.DAILY;
@@ -177,7 +175,6 @@ public class LogAnalyzer2
             if (!Files.exists(Paths.get(logDir)))
             {
                 System.err.println("错误：日志目录不存在。请检查日志目录：" + logDir);
-//                return;
                 throw new RuntimeException("错误：日志目录不存在。请检查日志目录：" + logDir);
             }
             // 检查日志目录下是否有log日志文件，有的话则获取
@@ -199,7 +196,6 @@ public class LogAnalyzer2
             if (logFiles == null || logFiles.isEmpty())
             {
                 System.err.println("错误：日志目录内未找到任何log日志文件。请检查日志目录：" + logDir);
-//                return;
                 throw new RuntimeException("错误：日志目录内未找到任何log日志文件。请检查日志目录：" + logDir);
             }
 
@@ -257,8 +253,8 @@ public class LogAnalyzer2
 
     /**
      * 是否在日期范围内的判断逻辑
-     * 日模式：baseDate前7天
-     * 月模式：baseDate所在月及前6个月
+     * 日模式：baseDate所在日期（包含）前7天
+     * 月模式：baseDate所在月份（包含）前6个月
      */
     private static boolean isWithinRange(LocalDate logDate, LocalDate baseDate, AnalysisMode mode) {
 
@@ -504,7 +500,7 @@ public class LogAnalyzer2
 
     /**
      * 动态生成日期范围
-     * 周模式：生成7天日期
+     * 日模式：生成7天日期
      * 月模式：生成包含当前月及前6个月的每月首日
      */
     private static List<LocalDate> generateDateRange(LocalDate date, AnalysisMode mode)
@@ -573,7 +569,7 @@ public class LogAnalyzer2
             }
             mode = AnalysisMode.MONTHLY;
         } else
-        { // 周模式参数，如20250303
+        { // 日模式参数，如20250303
             try
             {
                 baseDate = LocalDate.parse(dateArg, DateTimeFormatter.ofPattern("yyyyMMdd"));
