@@ -35,7 +35,10 @@ public class LogAnalyzer2
     // 日志中日期的格式
     private static final String DATE_PATTERN = "yyyy-MM-dd";
     // 日志中表示通义灵码-“写代码”行为的关键字
-    private static final String ACTION_PATTERN = "com.alibabacloud.intellij.cosy.editor.CosyEditorActionHandler - execute action:EditorTab";
+    // 王金涛的包名显示的是：c.a.i.c.e.CosyEditorActionHandler - execute action:EditorTab 所以只用最后部分去匹配
+//    private static final String ACTION_PATTERN = "com.alibabacloud.intellij.cosy.editor.CosyEditorActionHandler - execute action:EditorTab";
+    private static final String ACTION_PATTERN = ".CosyEditorActionHandler - execute action:EditorTab";
+
     // 日志中表示通义灵码-“提问”行为的关键字
     private static final String SELECT_PATTERN = "Select model is";
 
@@ -45,7 +48,7 @@ public class LogAnalyzer2
     private static final String COPILOT_SELECT_PATTERN = "https://api.individual.githubcopilot.com/chat/completions";
 
     // 月格式
-    private static final DateTimeFormatter MONTH_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM");
+    private static final DateTimeFormatter MONTH_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM");    
 
     // 统计模式枚举
     enum AnalysisMode {
